@@ -6,9 +6,9 @@ use Illuminate\Database\Seeder;
 class SlidesTableSeeder extends Seeder
 {
     protected $items = [
-        ['Слайдер 1', 'Текст слайдера.', 'http://google.ru', 'slide-1.jpg'],
-        ['Слайдер 2', 'Текст слайдера.', '', 'slide-2.jpg'],
-        ['Слайдер 3', 'Текст слайдера.', '', 'slide-3.jpg'],
+//        ['Слайдер 1', 'Текст слайдера.', 'http://google.ru', 'slide-1.jpg'],
+//        ['Слайдер 2', 'Текст слайдера.', '', 'slide-2.jpg'],
+//        ['Слайдер 3', 'Текст слайдера.', '', 'slide-3.jpg'],
     ];
 
     /**
