@@ -11,7 +11,7 @@
         <div class="container text-center">
             <div class="action-wrapper">
                 <div class="action-text">
-                    <div>ВНИМАНИЕ! У НАС СЕЗОННАЯ АКЦИЯ НА БАНКЕТ</div>
+                    <div>ВНИМАНИЕ! У НАС СЕЗОННАЯ АКЦИЯ НА БАНКЕТ </div>
                     <div><span class="order">ЗАКАЖИТЕ БАНКЕТ</span> ПРЯМО СЕЙЧАС, И У ВАС БУДЕТ 20% СКИДКИ</div>
                 </div>
                 <div class="action-countdown">
