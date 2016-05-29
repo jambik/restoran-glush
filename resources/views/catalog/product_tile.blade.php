@@ -1,3 +1,4 @@
+<a name="product-{{ $product->id }}">
 <div class="col-md-6 product">
     <div class="img">
         @if ($product->image)

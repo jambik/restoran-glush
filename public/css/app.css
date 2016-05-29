@@ -25,10 +25,22 @@ h4 { font-size: 18pt; font-weight: 300; }
 .main-container { max-width: 1600px; position: relative; margin: 0 auto; box-shadow: 0 0 10px rgba(0,0,0,0.5); background: #fff; }
 
 header { min-height: 880px; background: #585477 url('../img/header-lamp.jpg') center center no-repeat; }
-header nav { text-align: center; margin-top: 30px; margin-bottom: 20px; }
-header nav ul { list-style: none; padding: 0; margin: 0; font-size: 13pt; font-weight: 300; }
-header nav li { display: inline-block; }
-header nav a { color: #fff; text-transform: uppercase; display: inline-block; padding: 5px; margin: 0 10px; }
+
+nav { text-align: center; margin-top: 30px; margin-bottom: 20px; }
+nav ul { *zoom:1; list-style: none; padding: 0; margin: 0; font-size: 13pt; font-weight: 300; }
+nav ul:before, nav ul:after { content:""; display:table; }
+nav ul:after { clear:both; }
+nav ul > li { display: inline-block; position:relative; margin: 0 10px; }
+nav a { color: #fff; text-transform: uppercase; display: block; padding: 5px; }
+nav a:hover { text-decoration:none; background:#fff; }
+nav li ul { background:#273754; }
+nav li ul li { width:200px; text-align: left; margin: 0; font-size: 12pt; }
+nav li ul a { border:none; padding: 5px 10px; }
+nav li ul a:hover { background:rgba(0,0,0,0.2); color: #fff; }
+
+nav li ul { position:absolute; left:0; top:34px; z-index:1; visibility:hidden; opacity:0; filter:alpha(opacity=0); transition:200ms ease; }
+nav ul > li:hover ul { visibility:visible; opacity:1; filter:alpha(opacity=100); }
+
 header .fork-and-spoon { background: url('../img/fork-and-spoon.png') center center no-repeat; height: 118px; }
 header .slogan { text-align: center; min-height: 68px; font-size: 36pt; color: #fff; margin-bottom: 20px; font-style: italic; }
 header .logo { text-align: center; }

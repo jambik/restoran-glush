@@ -35,10 +35,12 @@
                 <div class="row">
                     <div class="clearfix products-previews">
                         @foreach ($productsPreview as $product)
-                            <div class="product-preview" style="background-image: url('/images/anons/{{ $product->img_url . $product->image }}')">
-                                <div class="product-name">{{ $product->name }}</div>
-                                <div class="product-category"><span>{{ $product->category->name }}</span></div>
-                            </div>
+                            <a href="{{ route('catalog.category', $product->category->slug) . '#product-' . $product->id }}">
+                                <div class="product-preview" style="background-image: url('/images/anons/{{ $product->img_url . $product->image }}')">
+                                    <div class="product-name">{{ $product->name }}</div>
+                                    <div class="product-category"><span>{{ $product->category->name }}</span></div>
+                                </div>
+                            </a>
                         @endforeach
                     </div>
                 </div>

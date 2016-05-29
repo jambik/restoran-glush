@@ -34,13 +34,49 @@
             <nav>
                 <ul>
                     <li><a href="#" onclick="$('#calculation').show(); $('body').scrollTo($('#calculation'), 500)">ЗАБРОНИРОВАТЬ</a></li>
-                    <li><a href="{{ route('catalog') }}">МЕНЮ</a></li>
-                    <li><a href="{{ route('page.show', 'meropriyatiya') }}">МЕРОПРИЯТИЯ</a></li>
+                    <li>
+                        <a href="{{ route('catalog') }}">МЕНЮ</a>
+                        @if ($categories)
+                            <ul>
+                                @foreach ($categories as $value)
+                                    <li><a href="{{ route('catalog.category', $value->slug) }}">{{ $value->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                    <li>
+                        <a href="{{ route('page.show', 'meropriyatiya') }}">МЕРОПРИЯТИЯ</a>
+                        @if ($eventsPages)
+                            <ul>
+                                @foreach ($eventsPages as $value)
+                                    <li><a href="{{ route('page.show', $value->slug) }}">{{ $value->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
                     <li><a href="{{ route('page.show', 'detyam') }}">ДЕТЯМ</a></li>
                     <li><a href="{{ route('galleries') }}">ФОТОАЛЬБОМ</a></li>
                     <li><a href="{{ route('page.show', 'akcii') }}">АКЦИИ</a></li>
-                    <li><a href="{{ route('page.show', 'o-nas') }}">О НАС</a></li>
-                    <li><a href="{{ route('articles') }}">СТАТЬИ</a></li>
+                    <li>
+                        <a href="{{ route('page.show', 'o-nas') }}">О НАС</a>
+                        @if ($aboutUsPages)
+                            <ul>
+                                @foreach ($aboutUsPages as $value)
+                                    <li><a href="{{ route('page.show', $value->slug) }}">{{ $value->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                    <li>
+                        <a href="{{ route('articles') }}">СТАТЬИ</a>
+                        @if ($mainArticles)
+                            <ul>
+                                @for ($i = 0; $i < ($mainArticles->count() < 4 ? $mainArticles->count() : 4); $i++)
+                                    <li><a href="{{ route('articles.show', $mainArticles[$i]->slug) }}">{{ $mainArticles[$i]->name }}</a></li>
+                                @endfor
+                            <ul>
+                        @endif
+                    </li>
                 </ul>
             </nav>
             <div class="fork-and-spoon"></div>
@@ -48,11 +84,6 @@
             <div class="logo"><a href="{{ route('index') }}"><img src="{{ asset('img/logo-big.png') }}"></a></div>
             <div class="below-logo">
                 @yield('below-logo')
-                {{--<ul>
-                    <li><a href="#">Праздники</a></li>
-                    <li><a href="#">Свадебные банкеты</a></li>
-                    <li><a href="#">Уютное кафе</a></li>
-                </ul>--}}
             </div>
             <div class="phone-number"><span>+7 (900) 571-55-77</span></div>
             <div class="more">
@@ -62,11 +93,6 @@
             </div>
             <div class="below-more">
                 @yield('below-more')
-                {{--<ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Меню</a></li>
-                    <li><a href="#">Завтраки</a></li>
-                </ul>--}}
             </div>
         </div>
     </header>
