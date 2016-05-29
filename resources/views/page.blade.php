@@ -3,10 +3,14 @@
 @section('title', $page->title)
 
 @section('content')
-    @include('partials._status')
-    @include('partials._errors')
+    <section id="content">
+        <div class="container">
+            @include('partials._status')
+            @include('partials._errors')
 
-    {!! $page->text !!}
+            {!! $page->text !!}
+        </div>
+    </section>
 
     @if ($page->slug == 'nashi-kontakty')
         <div>&nbsp;</div>

@@ -17,29 +17,34 @@
 </div>
 
 <div class="input-field col s12">
+    {!! Form::label('weight', 'Вес') !!}
+    {!! Form::text('weight', null, ['class' => 'validate'.($errors->has('weight') ? ' invalid' : '')]) !!}
+</div>
+
+<div class="input-field col s12">
     {!! Form::select('category_id', $categories, isset($categoryId) ? $categoryId : null, ['class' => 'validate'.($errors->has('category_id') ? ' invalid' : '')]) !!}
     {!! Form::label('category_id', 'Категория') !!}
 </div>
 
-<div class="input-field col s12">
+{{--<div class="input-field col s12">
     <select name="material" id="material">
         <option value="0">- Выберите материал -</option>
         @foreach (trans('vars.material') as $key => $val)<option value="{{ $key }}"{{ isset($item) && $item->material == $key ? ' selected' : '' }}>{{ $val }}</option>@endforeach
     </select>
     {!! Form::label('material', 'Материал') !!}
-</div>
+</div>--}}
 
-<div class="input-field col s12 input-checkbox">
+{{--<div class="input-field col s12 input-checkbox">
     {!! Form::checkbox('available', 1, null, ['id' => 'available', 'class' => $errors->has('available') ? ' invalid' : '']) !!}
     {!! Form::label('available', 'Доступность') !!}
-</div>
+</div>--}}
 
 <div class="input-field col s12">
     {!! Form::label('brief', 'Краткое описание продукта') !!}
     {!! Form::textarea('brief', null, ['class' => 'validate materialize-textarea'.($errors->has('brief') ? ' invalid' : '')]) !!}
 </div>
 
-<div class="input-field col s12 input-html">
+{{--<div class="input-field col s12 input-html">
     {!! Form::label('text', 'Полное описание продукта') !!}
     {!! Form::textarea('text', null, ['class' => 'validate materialize-textarea'.($errors->has('text') ? ' invalid' : '')]) !!}
 </div>
@@ -57,7 +62,7 @@
 <div class="input-field col s12">
     {!! Form::label('description', 'Description (META)') !!}
     {!! Form::text('description', null, ['class' => 'validate'.($errors->has('description') ? ' invalid' : '')]) !!}
-</div>
+</div>--}}
 
 @include('admin.partials._imageable')
 

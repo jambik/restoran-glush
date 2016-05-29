@@ -16,12 +16,11 @@ class Product extends Model implements SluggableInterface
 
     protected $table = 'products';
 
-    protected $fillable = ['name', 'slug', 'category_id', 'price', 'material', 'brief', 'text', 'available', 'title', 'keywords', 'description', 'image'];
+    protected $fillable = ['name', 'slug', 'category_id', 'price', 'material', 'brief', 'text', 'weight', 'title', 'keywords', 'description', 'image'];
 
     protected $casts = [
         'price' => 'integer',
-        'available' => 'boolean',
-        'category_id' => 'int',
+        'category_id' => 'integer',
     ];
 
     protected $appends = ['img_url', 'photo_url'];

@@ -55,6 +55,7 @@ return array(
         'small'  => App\ImageTemplates\Small::class,
         'medium' => App\ImageTemplates\Medium::class,
         'large'  => App\ImageTemplates\Large::class,
+        'anons'  => App\ImageTemplates\Anons::class,
     ),
 
     /*

@@ -46,6 +46,9 @@ Route::group(['prefix' => 'admin'], function()
         ## Slides
         Route::resource('slides', 'Admin\SlidesController');
 
+        ## Recalls
+        Route::resource('recalls', 'Admin\RecallsController');
+
         ## Users
         Route::resource('users', 'Admin\UsersController');
 
