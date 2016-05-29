@@ -11,6 +11,11 @@
     </div>
 @endif
 
+<div class="input-field col s12">
+    {!! Form::select('parent_id', [0 => ''] + $rootPages, null, ['class' => 'validate'.($errors->has('parent_id') ? ' invalid' : '')]) !!}
+    {!! Form::label('parent_id', 'Родительская страница') !!}
+</div>
+
 <div class="input-field col s12 input-html">
     {!! Form::label('text', 'Текст страницы') !!}
     {!! Form::textarea('text', null, ['class' => 'materialize-textarea validate'.($errors->has('text') ? ' invalid' : '')]) !!}

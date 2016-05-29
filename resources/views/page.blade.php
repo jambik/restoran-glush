@@ -2,6 +2,13 @@
 
 @section('title', $page->title)
 
+@section('below-more')
+<ul>
+    <li><a href="{{ route('index') }}">Главная</a></li>
+    <li>{{ $page->name }}</li>
+</ul>
+@endsection
+
 @section('content')
     <section id="content">
         <div class="container">
@@ -40,6 +47,8 @@
             </div>
         </form>
     @endif
+
+    @include('partials._calculation')
 @endsection
 
 @section('header_scripts')

@@ -33,7 +33,7 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
 $factory->define(App\Article::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->company,
-        'text' => $faker->paragraph(3),
+        'text' => $faker->paragraph(15),
         'title' => $faker->sentence(2),
         'keywords' => implode(', ', $faker->words(4)),
         'description' => $faker->sentence(),

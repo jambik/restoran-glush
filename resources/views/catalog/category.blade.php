@@ -2,6 +2,14 @@
 
 @section('title', $category->title ?: $category->name)
 
+@section('below-more')
+    <ul>
+        <li><a href="{{ route('index') }}">Главная</a></li>
+        <li><a href="{{ route('catalog') }}">Меню</a></li>
+        <li><a href="{{ route('catalog.category', $category->slug) }}">{{ $category->name }}</a></li>
+    </ul>
+@endsection
+
 @section('content')
     <section id="products">
         <div class="container">
@@ -24,4 +32,6 @@
             @endif
         </div>
     </section>
+
+    @include('partials._calculation')
 @endsection

@@ -28,6 +28,8 @@
             <button type="submit" class="btn btn-success btn-block">Отправить сообщение</button>
         </div>
     </form>
+
+    @include('partials._calculation')
 @endsection
 
 @section('header_scripts')

@@ -33,25 +33,26 @@
         <div class="container-fluid">
             <nav>
                 <ul>
-                    <li><a href="#">ЗАБРОНИРОВАТЬ</a></li>
+                    <li><a href="#" onclick="$('#calculation').show(); $('body').scrollTo($('#calculation'), 500)">ЗАБРОНИРОВАТЬ</a></li>
                     <li><a href="{{ route('catalog') }}">МЕНЮ</a></li>
-                    <li><a href="{{ route('page.show', 'bankety') }}">МЕРОПРИЯТИЯ</a></li>
-                    <li><a href="#">ДЕТЯМ</a></li>
-                    <li><a href="#">ФОТОАЛЬБОМ</a></li>
-                    <li><a href="#">АКЦИИ</a></li>
-                    <li><a href="#">О НАС</a></li>
-                    <li><a href="#">СТАТЬИ</a></li>
+                    <li><a href="{{ route('page.show', 'meropriyatiya') }}">МЕРОПРИЯТИЯ</a></li>
+                    <li><a href="{{ route('page.show', 'detyam') }}">ДЕТЯМ</a></li>
+                    <li><a href="{{ route('galleries') }}">ФОТОАЛЬБОМ</a></li>
+                    <li><a href="{{ route('page.show', 'akcii') }}">АКЦИИ</a></li>
+                    <li><a href="{{ route('page.show', 'o-nas') }}">О НАС</a></li>
+                    <li><a href="{{ route('articles') }}">СТАТЬИ</a></li>
                 </ul>
             </nav>
             <div class="fork-and-spoon"></div>
             <div class="slogan text-shadow-lg">Банкеты в кафе</div>
             <div class="logo"><a href="{{ route('index') }}"><img src="{{ asset('img/logo-big.png') }}"></a></div>
             <div class="below-logo">
-                <ul>
+                @yield('below-logo')
+                {{--<ul>
                     <li><a href="#">Праздники</a></li>
                     <li><a href="#">Свадебные банкеты</a></li>
                     <li><a href="#">Уютное кафе</a></li>
-                </ul>
+                </ul>--}}
             </div>
             <div class="phone-number"><span>+7 (900) 571-55-77</span></div>
             <div class="more">
@@ -60,11 +61,12 @@
                 </a>
             </div>
             <div class="below-more">
-                <ul>
+                @yield('below-more')
+                {{--<ul>
                     <li><a href="#">Главная</a></li>
                     <li><a href="#">Меню</a></li>
                     <li><a href="#">Завтраки</a></li>
-                </ul>
+                </ul>--}}
             </div>
         </div>
     </header>
@@ -79,48 +81,54 @@
             <div class="row">
                 <div class="col-sm-2 col-sm-offset-1">
                     <ul>
-                        <li class="title"><a href="#">Меню</a></li>
-                        <li><a href="#">Завтраки</a></li>
-                        <li><a href="#">Первые блюда</a></li>
-                        <li><a href="#">Блюда на гриле</a></li>
-                        <li><a href="#">Гарниры и соусы</a></li>
-                        <li><a href="#">Салаты</a></li>
-                        <li><a href="#">Закуски</a></li>
-                        <li><a href="#">Десерты</a></li>
-                        <li><a href="#">Детское меню</a></li>
+                        <li class="title"><a href="{{ route('catalog') }}">Меню</a></li>
+                        @if ($categories)
+                            @foreach ($categories as $value)
+                                <li><a href="{{ route('catalog.category', $value->slug) }}">{{ $value->name }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div class="col-sm-2">
                     <ul>
-                        <li class="title"><a href="#">Мероприятия</a></li>
-                        <li><a href="#">Свадьбы</a></li>
-                        <li><a href="#">Дни рождения</a></li>
-                        <li><a href="#">Детские праздники</a></li>
-                        <li><a href="#">Корпоративы</a></li>
+                        <li class="title"><a href="{{ route('page.show', 'meropriyatiya') }}">Мероприятия</a></li>
+                        @if ($eventsPages)
+                            @foreach ($eventsPages as $value)
+                                <li><a href="{{ route('page.show', $value->slug) }}">{{ $value->name }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div class="col-sm-2">
                     <ul>
-                        <li class="title"><a href="#">Фотоальбом</a></li>
-                        <li><a href="#"><img src="{{ asset('img/gallery.jpg') }}" class="img-responsive"></a></li>
+                        <li class="title"><a href="{{ route('galleries') }}">Фотоальбом</a></li>
+                        <li>
+                            @if ($firstGallery)
+                                @for ($i = 0; $i < ($firstGallery->photos->count() < 6 ? $firstGallery->photos->count() : 6); $i++)
+                                    <a href="{{ route('galleries.show', $firstGallery->slug) }}"><img src="/images/small/{{ $firstGallery->photos[$i]->img_url . $firstGallery->photos[$i]->image }}" class="img-gallery"></a>
+                                @endfor
+                            @endif
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-2">
                     <ul>
-                        <li class="title"><a href="#">О нас</a></li>
-                        <li><a href="#">Кто мы</a></li>
-                        <li><a href="#">Наши окрестности</a></li>
-                        <li><a href="#">Мы в Этномире</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li class="title"><a href="{{ route('page.show', 'o-nas') }}">О нас</a></li>
+                        @if ($aboutUsPages)
+                            @foreach ($aboutUsPages as $value)
+                                <li><a href="{{ route('page.show', $value->slug) }}">{{ $value->name }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div class="col-sm-2">
                     <ul>
-                        <li class="title"><a href="#">Статьи</a></li>
-                        <li><a href="#">Лесной лабиринт "Дерби"</a></li>
-                        <li><a href="#">О комплексе Этномир</a></li>
-                        <li><a href="#">Анонсы фотоальбома</a></li>
-                        <li><a href="#">Наши продукты</a></li>
+                        <li class="title"><a href="{{ route('articles') }}">Статьи</a></li>
+                        @if ($mainArticles)
+                            @for ($i = 0; $i < ($mainArticles->count() < 4 ? $mainArticles->count() : 4); $i++)
+                                <li><a href="{{ route('articles.show', $mainArticles[$i]->slug) }}">{{ $mainArticles[$i]->name }}</a></li>
+                            @endfor
+                        @endif
                     </ul>
                 </div>
             </div>

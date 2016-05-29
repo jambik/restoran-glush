@@ -6,6 +6,12 @@ $(document).ready(function() {
         })
     }
 
+    if ($('#form_calculation').length) {
+        $('#form_calculation').on('submit', function(e){
+            ajaxFormSubmit(e, calculationSuccess);
+        })
+    }
+
     $("#form_recall").submit(function() {
 
         // Место для отображения ошибок в форме
@@ -95,6 +101,8 @@ $(document).ready(function() {
         });
     }
 
+    performCalculationForm();
+
 });
 
 function ajaxFormSubmit(e, successFunction)
@@ -160,9 +168,8 @@ function callbackSuccess(data)
     showNoty(data.message, 'success');
 }
 
-function recallSuccess(data)
+function calculationSuccess(data)
 {
-    $('#recallModal').modal('hide');
     showNoty(data.message, 'success');
 }
 
@@ -220,4 +227,13 @@ function cancelAvatarUpload()
 
     $('#avatar_cropper').hide();
     $('#avatar_current').show();
+}
+
+function performCalculationForm()
+{
+    $('#calculation .guests-number-choices div').on('click', function(){
+        $('#calculation .guests-number-choices div').removeClass('active');
+        $(this).addClass('active');
+        $('#form_calculation [name=number]').val($(this).html());
+    });
 }

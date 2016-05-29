@@ -25,7 +25,7 @@ class PagesController extends BackendController
      */
     public function index()
     {
-        $items = $this->model->all();
+        $items = $this->model->with('parent')->get();
 
         return view('admin.'.$this->resourceName.'.index', compact('items'));
     }
@@ -37,7 +37,9 @@ class PagesController extends BackendController
      */
     public function create()
     {
-        return view('admin.'.$this->resourceName.'.create');
+        $rootPages = $this->model->where('parent_id', '0')->lists('name', 'id')->all();
+
+        return view('admin.'.$this->resourceName.'.create', compact('rootPages'));
     }
 
     /**
@@ -77,8 +79,9 @@ class PagesController extends BackendController
     public function edit($id)
     {
         $item = $this->model->findOrFail($id);
+        $rootPages = $this->model->where('parent_id', '0')->lists('name', 'id')->all();
 
-        return view('admin.'.$this->resourceName.'.edit', compact('item'));
+        return view('admin.'.$this->resourceName.'.edit', compact('item', 'rootPages'));
     }
 
     /**

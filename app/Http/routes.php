@@ -90,6 +90,9 @@ Route::group([], function ()
     ## Recall
     Route::post('recall', ['as' => 'recall.send', 'uses' => 'CommonController@recallSend']);
 
+    ## Recall
+    Route::post('calculation', ['as' => 'calculation.send', 'uses' => 'CommonController@calculationSend']);
+
     ## Pages
     Route::get('page/{slug}', ['as' => 'page.show', 'uses' => 'PagesController@show']);
 

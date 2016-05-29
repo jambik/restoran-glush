@@ -17,4 +17,6 @@
             @each('catalog.product_list', $products, 'product')
         </div>
     @endif
+
+    @include('partials._calculation')
 @endsection
