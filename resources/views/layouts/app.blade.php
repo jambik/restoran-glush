@@ -45,7 +45,7 @@
             </nav>
             <div class="fork-and-spoon"></div>
             <div class="slogan text-shadow-lg">Банкеты в кафе</div>
-            <div class="logo"><a href="{{ route('index') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
+            <div class="logo"><a href="{{ route('index') }}"><img src="{{ asset('img/logo-big.png') }}"></a></div>
             <div class="below-logo">
                 <ul>
                     <li><a href="#">Праздники</a></li>

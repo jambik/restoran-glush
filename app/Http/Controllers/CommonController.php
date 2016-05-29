@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Recall;
 use Illuminate\Http\Request;
 use ReCaptcha\ReCaptcha;
 use Snowfire\Beautymail\Beautymail;
@@ -117,5 +118,52 @@ class CommonController extends FrontendController
         }
 
         return redirect(route('index'))->with('status', 'Заявка на обратный звонок отправлена');
+    }
+
+    /**
+     * Send recall form.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function recallSend(Request $request)
+    {
+        $rules = [
+            'name' => 'required',
+            'contact' => 'required',
+//            'message' => 'required',
+        ];
+
+        $messages = [
+            'name.required' => 'Введите Ваше имя. Мы же должны как-то к Вам обращаться :)',
+            'contact.required' => 'Введите ваши контактные данные для обратной связи',
+//            'message.required' => 'А где отзыв?',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails())
+        {
+            $this->throwValidationException($request, $validator);
+        }
+
+        Recall::create($request->all());
+
+        $beautymail = app()->make(Beautymail::class);
+        $beautymail->send('emails.recall', ['input' => $request->all()], function($message)
+        {
+            $message->from(env('MAIL_ADDRESS'), env('MAIL_NAME'));
+            $message->to($this->settings['email'] ?: env('MAIL_ADDRESS'));
+            $message->subject('Отзыв');
+        });
+
+        if ($request->ajax()){
+            return response()->json([
+                'status' => 'ok',
+                'message' => 'Отзыв отправлен',
+            ]);
+        }
+
+        return redirect(route('index'))->with('status', 'Отзыв отправлен');
     }
 }

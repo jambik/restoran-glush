@@ -87,6 +87,9 @@ Route::group([], function ()
     ## Callback
     Route::post('callback', ['as' => 'callback', 'uses' => 'CommonController@callback']);
 
+    ## Recall
+    Route::post('recall', ['as' => 'recall.send', 'uses' => 'CommonController@recallSend']);
+
     ## Pages
     Route::get('page/{slug}', ['as' => 'page.show', 'uses' => 'PagesController@show']);
 

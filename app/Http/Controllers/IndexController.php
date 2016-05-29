@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Page;
 use App\Product;
+use App\Recall;
 
 class IndexController extends FrontendController
 {
@@ -17,9 +18,10 @@ class IndexController extends FrontendController
     {
         $page = Page::find(1);
 
-//        $productsPreview = Product::orderByRaw('RAND()')->take(15)->get();
         $productsPreview = Product::with('category')->take(15)->get();
 
-        return view('index', compact('page', 'productsPreview'));
+        $recalls = Recall::where('approved', true)->orderBy('created_at', 'desc')->take(3)->get();
+
+        return view('index', compact('page', 'productsPreview', 'recalls'));
     }
 }

@@ -121,44 +121,30 @@
     <section id="recalls">
         <div class="container">
             <div class="text-xl text-center">Отзывы</div>
+            @if ( ! $recalls->count())
+                <p class="text-center">- отзывов пока нет -</p>
+                <p class="text-center">&nbsp;</p>
+            @endif
+            @foreach($recalls as $recall)
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        @if($recall->image)
+                            <img src="/images/square/{{ $recall->img_url . $recall->image }}" class="img-responsive img-circle">
+                        @else
+                            <img src="/img/default.png" class="img-responsive img-circle">
+                        @endif
+                    </div>
+                    <div class="col-md-8 col-sm-9">
+                        <blockquote>
+                            <p>{{ $recall->text }}</p>
+                            <div>{{ $recall->name }} - <cite>{{ $recall->created_at->toDateString() }}</cite></div>
+                        </blockquote>
+                    </div>
+                </div>
+            @endforeach
 
-            <div class="row">
-                <div class="col-md-3 col-sm-3">
-                    <img src="{{ asset('img/recaller-1.jpg') }}" class="img-responsive img-circle">
-                </div>
-                <div class="col-md-8 col-sm-9">
-                    <blockquote>
-                        <p>Я работаю не далеко от Метро “Таганская”. Доставка из “ПловХаус” всегда  быстро и очень вкусно. Спасибо вам большое.</p>
-                        <div>Владимир Сергеев - <cite>12.02.2016</cite></div>
-                    </blockquote>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3 col-sm-3">
-                    <img src="{{ asset('img/recaller-2.jpg') }}" class="img-responsive img-circle">
-                </div>
-                <div class="col-md-8 col-sm-9">
-                    <blockquote>
-                        <p>Я работаю не далеко от Метро “Таганская”. Доставка из “ПловХаус” всегда  быстро и очень вкусно. Спасибо вам большое.</p>
-                        <div>Владимир Сергеев - <cite>12.02.2016</cite></div>
-                    </blockquote>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3 col-sm-3">
-                    <img src="{{ asset('img/recaller-3.jpg') }}" class="img-responsive img-circle">
-                </div>
-                <div class="col-md-8 col-sm-9">
-                    <blockquote>
-                        <p>Я работаю не далеко от Метро “Таганская”. Доставка из “ПловХаус” всегда  быстро и очень вкусно. Спасибо вам большое.</p>
-                        <div>Владимир Сергеев - <cite>12.02.2016</cite></div>
-                    </blockquote>
-                </div>
-            </div>
             <div class="text-center">
-                <a href="#" class="btn btn-lg btn-danger">Оставить свой отзыв</a>
+                <a href="#" data-toggle="modal" data-target="#recallModal" class="btn btn-lg btn-danger">Оставить свой отзыв</a>
             </div>
         </div>
     </section>
@@ -166,4 +152,8 @@
     <section id="map">
         <img src="{{ asset('img/map.jpg') }}" class="img-responsive">
     </section>
+@endsection
+
+@section('footer_scripts')
+    @include('partials._recall')
 @endsection
