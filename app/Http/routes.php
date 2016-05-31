@@ -61,6 +61,9 @@ Route::group(['prefix' => 'admin'], function()
         ## Imageable routes
         Route::delete('imageable', ['as' => 'imageable.delete', 'uses' => 'Admin\ImageableController@delete']);
 
+        ## Headerable routes
+        Route::delete('headerable', ['as' => 'headerable.delete', 'uses' => 'Admin\HeaderableController@delete']);
+
         ## Photoable routes
         Route::post('photoable', ['as' => 'photoable.save', 'uses' =>'Admin\PhotoableController@savePhoto']);
         Route::delete('photoable/{id}', ['as' => 'photoable.delete', 'uses' => 'Admin\PhotoableController@deletePhoto'])->where('id', '[0-9]+');

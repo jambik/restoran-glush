@@ -62,11 +62,34 @@
                 </div>
 
                 <div v-if="node.image" class="center category-image">
-                    <div  v-show="! deletingImage">
-                        <div><img class="responsive-img circle z-depth-3" :src="'/images/small/' + node.img_url + node.image"></div>
+                    <div><img class="responsive-img circle z-depth-3" :src="'/images/small/' + node.img_url + node.image"></div>
+                    <div>&nbsp;</div>
+                    <button class="btn btn-small red waves-effect waves-light" type="button" title="Удалить фото" onclick="deleteImage(this)" data-request-url="{{ route('imageable.delete') }}" data-model-class="App\Category" :data-model-id="node.id"><i class="material-icons">delete</i></button>
+                    <div class="preloader-wrapper small active preloader" v-show="deletingImage"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>
+                </div>
+
+                <div class="headerable">
+                    <div class="title">Настройки Хидера</div>
+                    <div class="input-field col s12">
+                        <label for="header_title" v-bind:class="{'active': node.header[0].title}">Заголовок</label>
+                        <input v-model="node.header[0].title" class="validate" v-bind:class="{'valid': node.header[0].title}" name="header_title" id="header_title" type="text">
+                    </div>
+
+                    <div class="input-field file-field col s12">
+                        <div class="btn">
+                            <span>Фото</span>
+                            <input type="file" name="header_image" id="header_image">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" id="header-image-path" type="text" placeholder="Выберите файл">
+                        </div>
+                    </div>
+
+                    <div v-if="node.header[0].image" class="category-image-header">
+                        <div><img class="responsive-img z-depth-3" :src="'/images/small/' + node.header[0].img_url + node.header[0].image"></div>
                         <div>&nbsp;</div>
-                        <button class="btn btn-small red waves-effect waves-light" type="button" title="Удалить фото" onclick="deleteImage(this)" data-request-url="{{ route('imageable.delete') }}" data-model-class="App\Category" :data-model-id="node.id"><i class="material-icons">delete</i></button>
-                        <div class="preloader-wrapper small active preloader" v-show="deletingImage"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>
+                        <button class="btn btn-small red waves-effect waves-light" type="button" title="Удалить фото" onclick="deleteImage(this)" data-request-url="{{ route('headerable.delete') }}" data-model-class="App\Category" :data-model-id="node.id"><i class="material-icons">delete</i></button>
+                        <div class="preloader-wrapper small active preloader" v-show="deletingImageHeader"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>
                     </div>
                 </div>
 

@@ -1,3 +1,4 @@
+// TODO: Когда удаляешь фото, а потом сохраняешь выходит ошибка
 new Vue({
     el: '#app',
 
@@ -8,8 +9,7 @@ new Vue({
         node: false,
         nodeLoading: false,
         sendingForm: false,
-        deletingNode: false,
-        deletingImage: false
+        deletingNode: false
     },
 
     ready: function () {
@@ -47,6 +47,7 @@ new Vue({
                 $(that.nodeFormId).attr('action', that.baseUrl + '/' + selected.node.original.id);
                 $.get(that.baseUrl + '/' + selected.node.original.id, function(data) {
                     that.node = data;
+                    console.log(data);
                     CKEDITOR.instances.about.setData(that.node.about);
                 })
                 .fail(function(){
@@ -177,7 +178,16 @@ new Vue({
                 $("#jstree").jstree().set_text(data.id, data.name);
             }
 
-            if ($(that.nodeFormId + ' #image').val())
+            $(that.nodeFormId + ' #image').val('');
+            $(that.nodeFormId + ' #image-path').val('');
+
+            $(that.nodeFormId + ' #header_image').val('');
+            $(that.nodeFormId + ' #header-image-path').val('');
+
+            that.node = data;
+            console.log(data);
+
+            /*if ($(that.nodeFormId + ' #image').val())
             {
                 var formData = new FormData();
                 formData.append('image', $(that.nodeFormId + ' #image')[0].files[0]);
@@ -200,7 +210,7 @@ new Vue({
                         sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                     }
                 });
-            }
+            }*/
         },
 
         ajaxFormSubmit: function (e, successFunction)
@@ -224,9 +234,12 @@ new Vue({
             that.sendingForm = true;
 
             $.ajax({
-                method: $(form).attr('method'),
                 url: $(form).attr('action'),
-                data: $(form).serialize(),
+                method: $(form).attr('method'),
+                data: new FormData(form),
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function (data)
                 {
                     successFunction(data);

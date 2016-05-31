@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\HeaderableTrait;
 use App\Traits\ResourceableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model implements SluggableInterface
 {
-    use SluggableTrait, ResourceableTrait;
+    use HeaderableTrait, SluggableTrait, ResourceableTrait;
 
     protected $table = 'pages';
 

@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    performSlideshow();
+    performCalculationForm();
+    performCountdown();
+
     if ($('#form_callback').length) {
         $('#form_callback').on('submit', function(e){
             ajaxFormSubmit(e, callbackSuccess);
@@ -34,7 +38,6 @@ $(document).ready(function() {
             url: url,
             type: 'POST',
             data: formData,
-            //async: false,
             cache: false,
             contentType: false,
             processData: false,
@@ -100,8 +103,6 @@ $(document).ready(function() {
             tLoading: 'Загрузка...'
         });
     }
-
-    performCalculationForm();
 
 });
 
@@ -235,5 +236,64 @@ function performCalculationForm()
         $('#calculation .guests-number-choices div').removeClass('active');
         $(this).addClass('active');
         $('#form_calculation [name=number]').val($(this).html());
+    });
+}
+
+function performSlideshow()
+{
+    var $slides = $('[data-slides]');
+
+    if ($slides.length) {
+        var current = 0;
+        var images = $slides.data('slides');
+        var count = images.length;
+        var timer;
+
+        if (count > 1) {
+            var slideshow = function (imageIndex) {
+                if (current >= count - 1) {
+                    current = 0
+                } else {
+                    current++;
+                }
+
+                if (imageIndex) {
+                    if (typeof timer !== "undefined") {
+                        clearTimeout(timer);
+                    }
+                    current = imageIndex - 1;
+                }
+
+                $slides
+                    .css('background-image', 'url("' + images[current] + '")')
+                    .show(0, function () {
+                        timer = setTimeout(slideshow, 10000);
+                    });
+            }
+
+            if ($('.slider-controls').length) {
+                for (var i = 0; i < count; i++) {
+                    $('.slider-controls').append('<span data-index="' + (i+1) + '"></span>');
+                }
+
+                $('.slider-controls span').on('click', function () {
+                    slideshow($(this).data('index'));
+                })
+            }
+
+            slideshow(1);
+        }
+    }
+}
+
+function performCountdown()
+{
+    if ($('#countdown'))
+    $('#countdown').countdown('2016/07/01', function(event) {
+        var totalDays = event.offset.totalDays;
+        var $this = $(this).html(event.strftime(''
+            + '<span class="time-item"><span class="time-name">дней</span><span class="time-digits">' + totalDays + '</span></span>'
+            + '<span class="time-item"><span class="time-name">часов</span><span class="time-digits">%H</span></span>'
+            + '<span class="time-item"><span class="time-name">минут</span><span class="time-digits">%M</span></span>'));
     });
 }

@@ -18,6 +18,7 @@ class SettingsController extends BackendController
             $settings->email = 'jambik@gmail.com';
             $settings->phone = '+71234567890';
             $settings->description = 'Описание сайта';
+            $settings->video = '';
         }
 
         return view('admin.settings.index', compact('settings'));
@@ -30,7 +31,7 @@ class SettingsController extends BackendController
         $settings->fill($request->all());
         $settings->save();
 
-        Flash::success("Настройки сохранены ");
+        Flash::success('Настройки сохранены');
 
         return redirect(route('admin.settings'));
     }

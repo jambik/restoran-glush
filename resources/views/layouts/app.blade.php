@@ -17,6 +17,10 @@
     <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
+    <link href="/library/video.js/video-js.min.css" rel="stylesheet">
+    <script src="/library/video.js/video.min.js"></script>
+    <script>videojs.options.flash.swf = "/library/video.js/video-js.swf"</script>
+
     @yield('header_scripts')
 
     <!--[if lt IE 9]>
@@ -29,7 +33,7 @@
 <body class="body">
 
 <div class="main-container">
-    <header>
+    <header id="header" @yield('header_attributes')>
         <div class="container-fluid">
             <nav>
                 <ul>
@@ -74,13 +78,13 @@
                                 @for ($i = 0; $i < ($mainArticles->count() < 4 ? $mainArticles->count() : 4); $i++)
                                     <li><a href="{{ route('articles.show', $mainArticles[$i]->slug) }}">{{ $mainArticles[$i]->name }}</a></li>
                                 @endfor
-                            <ul>
+                            </ul>
                         @endif
                     </li>
                 </ul>
             </nav>
             <div class="fork-and-spoon"></div>
-            <div class="slogan text-shadow-lg">Банкеты в кафе</div>
+            <div class="slogan text-shadow-lg">@yield('slogan')</div>
             <div class="logo"><a href="{{ route('index') }}"><img src="{{ asset('img/logo-big.png') }}"></a></div>
             <div class="below-logo">
                 @yield('below-logo')
@@ -94,6 +98,7 @@
             <div class="below-more">
                 @yield('below-more')
             </div>
+            <div class="slider-controls"></div>
         </div>
     </header>
 

@@ -121,7 +121,21 @@ main {
     content: "нет записей";
 }
 
+/* headerable */
+.headerable {
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    margin: 20px 0;
+    background: #eee;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+}
 
+.headerable .title {
+    font-size: 16pt;
+    text-align: center;
+}
 
 /* products */
 .products .collection span.badge {

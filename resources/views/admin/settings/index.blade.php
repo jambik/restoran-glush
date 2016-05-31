@@ -20,6 +20,11 @@
                     {!! Form::textarea('description', null, ['class' => 'materialize-textarea validate']) !!}
                 </div>
 
+                <div class="input-field col s12">
+                    {!! Form::label('video', 'Код Видео') !!}
+                    {!! Form::textarea('video', null, ['class' => 'materialize-textarea validate']) !!}
+                </div>
+
                 <div class="col s12 center">
                     <button type="submit" class="btn-large waves-effect waves-light"><i class="material-icons left">check_circle</i>Сохранить настройки</button>
                 </div>

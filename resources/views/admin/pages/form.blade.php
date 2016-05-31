@@ -36,6 +36,8 @@
     {!! Form::text('description', null, ['class' => 'validate'.($errors->has('description') ? ' invalid' : '')]) !!}
 </div>
 
+@include('admin.partials._headerable')
+
 <div class="input-field col s12 center">
     <button type="submit" class="btn-large waves-effect waves-light"><i class="material-icons left">check_circle</i> {{ $submitButtonText }}</button>
 </div>

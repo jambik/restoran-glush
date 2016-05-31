@@ -60,7 +60,7 @@ class CategoriesController extends BackendController
 
         $item = $this->model->create($request->all());
 
-        $item->saveImage($item, $request);
+//        $item->saveImage($item, $request);
 
         if ($request->ajax()){
             return response()->json($item);
@@ -78,7 +78,7 @@ class CategoriesController extends BackendController
      */
     public function show($id, Request $request)
     {
-        $item = $this->model->findOrFail($id);
+        $item = $this->model->with('header')->findOrFail($id);
 
         if ($request->ajax()){
             return response()->json($item);
@@ -112,9 +112,11 @@ class CategoriesController extends BackendController
 //            'slug' => 'required|unique:' . $this->model->getTable() . ',slug,'.$id,
         ]);
 
-        $item = $this->model->findOrFail($id);
+        $item = $this->model->with('header')->findOrFail($id);
 
         $item->update($request->all());
+
+        $item = $this->model->with('header')->findOrFail($id);
 
         if($request->ajax()) {
             return response()->json($item);

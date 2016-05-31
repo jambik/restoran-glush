@@ -30,6 +30,7 @@ elixir(function(mix) {
         '../../../bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js',
         '../../../bower_components/magnific-popup/dist/jquery.magnific-popup.min.js',
         '../../../bower_components/cropper/dist/cropper.min.js',
+        '../../../bower_components/jquery.countdown/dist/jquery.countdown.min.js'
     ], 'public/js/app.bundle.js');
     mix.copy([
         'bower_components/bootstrap/fonts',

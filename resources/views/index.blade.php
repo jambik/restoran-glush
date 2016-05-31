@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Ресторан Глушь')
+@section('title', $page->title)
+
+@section('header_attributes')data-slides='["{{ asset('img/header-lamp.jpg') }}","{{ asset('img/header-menu.jpg') }}","{{ asset('img/header-category.jpg') }}"]'@endsection
 
 @section('content')
     <section id="content" style="background: #f7f7f7;">
@@ -14,15 +16,25 @@
             <div class="action-wrapper">
                 <div class="action-text">
                     <div>ВНИМАНИЕ! У НАС СЕЗОННАЯ АКЦИЯ НА БАНКЕТ </div>
-                    <div><span class="order">ЗАКАЖИТЕ БАНКЕТ</span> ПРЯМО СЕЙЧАС, И У ВАС БУДЕТ 20% СКИДКИ</div>
+                    <div><a class="order" href="#" onclick="$('body').scrollTo($('#calculation'), 500)">ЗАКАЖИТЕ БАНКЕТ</a> ПРЯМО СЕЙЧАС, И У ВАС БУДЕТ 20% СКИДКИ</div>
                 </div>
                 <div class="action-countdown">
-                    До конца акции
-                    <span class="countdown-digits">
-                        <span>12</span>
-                        <span>30</span>
-                        <span>59</span>
-                    </span> осталось
+                    <span class="countdown-words">До конца акции</span>
+                    <span class="countdown-digits" id="countdown">
+                        <span class="time-item">
+                            <span class="time-name">дней</span>
+                            <span class="time-digits">12</span>
+                        </span>
+                        <span class="time-item">
+                            <span class="time-name">часов</span>
+                            <span class="time-digits">30</span>
+                        </span>
+                        <span class="time-item">
+                            <span class="time-name">минут</span>
+                            <span class="time-digits">59</span>
+                        </span>
+                    </span>
+                    <span class="countdown-words">осталось</span>
                 </div>
             </div>
         </div>
@@ -36,8 +48,12 @@
                     <div class="clearfix products-previews">
                         @foreach ($productsPreview as $product)
                             <a href="{{ route('catalog.category', $product->category->slug) . '#product-' . $product->id }}">
-                                <div class="product-preview" style="background-image: url('/images/anons/{{ $product->img_url . $product->image }}')">
+                                <div class="product-preview hvr-sweep-to-bottom" style="background-image: url('/images/anons/{{ $product->img_url . $product->image }}')">
                                     <div class="product-name">{{ $product->name }}</div>
+                                    <div class="product-details">
+                                        <div class="product-price">цена <strong>{{ $product->price }}</strong> руб.</div>
+                                        <div class="product-more">подробнее о блюде</div>
+                                    </div>
                                     <div class="product-category"><span>{{ $product->category->name }}</span></div>
                                 </div>
                             </a>
@@ -51,7 +67,7 @@
     @include('partials._calculation', ['show' => true])
 
     <section id="video">
-        <img src="{{ asset('img/video.jpg') }}" class="img-responsive">
+        {!! $settings->video !!}
     </section>
 
     <section id="recalls">
@@ -86,7 +102,7 @@
     </section>
 
     <section id="map">
-        <img src="{{ asset('img/map.jpg') }}" class="img-responsive">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=E4XyfmeSWzf7HFsdCFnBV8bPQ8Tz3_Ml&width=100%&height=720&lang=ru_RU&sourceType=constructor&scroll=true"></script>
     </section>
 @endsection
 
