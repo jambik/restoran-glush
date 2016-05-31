@@ -19,7 +19,8 @@ elixir(function(mix) {
         '../../../bower_components/magnific-popup/dist/magnific-popup.css',
         '../../../bower_components/cropper/dist/cropper.min.css',
         '../../../bower_components/font-awesome/css/font-awesome.min.css',
-        '../../../bower_components/animate.css/animate.min.css'
+        '../../../bower_components/animate.css/animate.min.css',
+        '../../../bower_components/video.js/dist/video-js.min.css'
     ], 'public/css/app.bundle.css');
     mix.scripts([
         '../../../bower_components/jquery/dist/jquery.min.js',
@@ -30,7 +31,8 @@ elixir(function(mix) {
         '../../../bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js',
         '../../../bower_components/magnific-popup/dist/jquery.magnific-popup.min.js',
         '../../../bower_components/cropper/dist/cropper.min.js',
-        '../../../bower_components/jquery.countdown/dist/jquery.countdown.min.js'
+        '../../../bower_components/jquery.countdown/dist/jquery.countdown.min.js',
+        '../../../bower_components/video.js/dist/video.min.js'
     ], 'public/js/app.bundle.js');
     mix.copy([
         'bower_components/bootstrap/fonts',

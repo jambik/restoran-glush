@@ -17,10 +17,6 @@
     <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
-    <link href="/library/video.js/video-js.min.css" rel="stylesheet">
-    <script src="/library/video.js/video.min.js"></script>
-    <script>videojs.options.flash.swf = "/library/video.js/video-js.swf"</script>
-
     @yield('header_scripts')
 
     <!--[if lt IE 9]>
@@ -36,6 +32,10 @@
     <header id="header" @yield('header_attributes')>
         <div class="container-fluid">
             <nav>
+                <div class="logo-small">
+                    <img src="{{ asset('img/logo-small.png') }}">
+                    <span>{{ $settings->phone }}</span>
+                </div>
                 <ul>
                     <li><a href="#" onclick="$('#calculation').show(); $('body').scrollTo($('#calculation'), 500)">ЗАБРОНИРОВАТЬ</a></li>
                     <li>
@@ -89,7 +89,7 @@
             <div class="below-logo">
                 @yield('below-logo')
             </div>
-            <div class="phone-number"><span>+7 (900) 571-55-77</span></div>
+            <div class="phone-number"><span>{{ $settings->phone }}</span></div>
             <div class="more">
                 <a href="#" onclick="$('body').scrollTo($('#below-header'), 500)">
                     <img src="{{ asset('img/icon-more.png') }}">

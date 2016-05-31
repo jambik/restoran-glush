@@ -4,6 +4,14 @@ $(document).ready(function() {
     performCalculationForm();
     performCountdown();
 
+    $(window).bind('scroll', function () {
+        if ($(window).scrollTop() > 400) {
+            $('nav').addClass('fixed');
+        } else {
+            $('nav').removeClass('fixed');
+        }
+    });
+
     if ($('#form_callback').length) {
         $('#form_callback').on('submit', function(e){
             ajaxFormSubmit(e, callbackSuccess);
