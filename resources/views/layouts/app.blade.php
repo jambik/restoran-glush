@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <nav>
                 <div class="logo-small">
-                    <img src="{{ asset('img/logo-small.png') }}">
+                    <a href="{{ route('index') }}"><img src="{{ asset('img/logo-small.png') }}"></a>
                     <span>{{ $settings->phone }}</span>
                 </div>
                 <ul>
