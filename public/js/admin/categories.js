@@ -185,32 +185,6 @@ new Vue({
             $(that.nodeFormId + ' #header-image-path').val('');
 
             that.node = data;
-            console.log(data);
-
-            /*if ($(that.nodeFormId + ' #image').val())
-            {
-                var formData = new FormData();
-                formData.append('image', $(that.nodeFormId + ' #image')[0].files[0]);
-                formData.append('name', data.name);
-                formData.append('_method', 'PUT');
-
-                $.ajax({
-                    url: that.baseUrl + '/' + data.id,
-                    type: 'POST',
-                    data: formData,
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    success: function(data){
-                        that.node = data;
-                        $(that.nodeFormId + ' #image').val('');
-                        $(that.nodeFormId + ' #image-path').val('');
-                    },
-                    error: function(jqXHR, textStatus, errorThrown){
-                        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
-                    }
-                });
-            }*/
         },
 
         ajaxFormSubmit: function (e, successFunction)

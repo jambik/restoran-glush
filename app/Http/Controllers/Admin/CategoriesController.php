@@ -112,11 +112,11 @@ class CategoriesController extends BackendController
 //            'slug' => 'required|unique:' . $this->model->getTable() . ',slug,'.$id,
         ]);
 
-        $item = $this->model->with('header')->findOrFail($id);
+        $item = $this->model->findOrFail($id);
 
         $item->update($request->all());
 
-        $item = $this->model->with('header')->findOrFail($id);
+        $item = $this->model->findOrFail($id);
 
         if($request->ajax()) {
             return response()->json($item);

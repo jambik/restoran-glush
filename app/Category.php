@@ -16,6 +16,10 @@ class Category extends Model implements SluggableInterface
 
     protected $table = 'categories';
 
+    protected $with = [
+        'header'
+    ];
+
     protected $fillable = [
         'name',
         'slug',
