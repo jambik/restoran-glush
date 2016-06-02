@@ -63,7 +63,11 @@
     @include('partials._calculation', ['show' => true])
 
     <section id="video">
-        {!! $settings->video !!}
+        <div class="video-js-responsive-container vjs-hd">
+            <video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" poster="/img/video.jpg" data-setup=''>
+                <source src="{!! $settings->video !!}" type="video/mp4" />
+            </video>
+        </div>
     </section>
 
     <section id="recalls">

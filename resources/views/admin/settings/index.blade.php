@@ -21,8 +21,8 @@
                 </div>
 
                 <div class="input-field col s12">
-                    {!! Form::label('video', 'Код Видео') !!}
-                    {!! Form::textarea('video', null, ['class' => 'materialize-textarea validate']) !!}
+                    {!! Form::label('video', 'Видео') !!}
+                    {!! Form::text('video', null, ['class' => 'validate']) !!}
                 </div>
 
                 <div class="col s12 center">
