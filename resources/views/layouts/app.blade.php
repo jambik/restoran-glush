@@ -26,7 +26,7 @@
 
     <title>@yield('title')</title>
 </head>
-<body class="body">
+<body class="body" @yield('onload')>
 
 <div class="main-container">
     <header id="header" @yield('header_attributes')>

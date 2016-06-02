@@ -3,7 +3,7 @@
     <div class="row product">
         <div class="col-sm-7 images">
             @if ($product->image)
-                <a class="popup-gallery" title="{{ $product->name }}" href="/images/original/{{ $product->img_url . $product->image }}"><img src="/images/large/{{ $product->img_url . $product->image }}" class="img img-responsive" alt="{{ $product->name }}"></a>
+                <img src="/images/large/{{ $product->img_url . $product->image }}" class="img img-responsive" alt="{{ $product->name }}">
             @else
                 <img src="/img/default.png" class="img img-responsive">
             @endif

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('onload') onload="$('body').scrollTo($('#below-header'), 1000)" @endsection
+
 @section('title', $category->title ?: $category->name)
 
 @section('header_attributes') @if (isset($category) && $category->header->count() && $category->header->first()->image) style="background-image: url('/images/original/{{ $category->header->first()->img_url . $category->header->first()->image }}')" @endif @endsection

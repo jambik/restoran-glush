@@ -128,6 +128,7 @@ header .below-more a { content: ""; color: #fff; font-weight: 300; }
 #products .product .description { margin: 0 10% 15px 10%; font-size: 18pt; font-style: italic; }
 #products .product .details span span { font-weight: 700; color: #9a0001; }
 
+#below-header { margin-bottom: 20px; }
 #content { padding-top: 30px; padding-bottom: 100px; min-height: 400px; }
 
 #calculation { background: #ecebeb; }
