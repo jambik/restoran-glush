@@ -178,7 +178,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    Сделано в jeny-art
+                    @yield('copyright')
                 </div>
                 <div class="col-sm-6">
                     <img src="{{ asset('img/icon-metrika.png') }}">
