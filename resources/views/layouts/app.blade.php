@@ -31,7 +31,15 @@
 <div class="main-container">
     <header id="header" @yield('header_attributes')>
         <div class="container-fluid">
-            <nav>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">Меню</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav class="collapse navbar-collapse" id="navbar">
                 <div class="logo-small">
                     <a href="{{ route('index') }}"><img src="{{ asset('img/logo-small.png') }}"></a>
                     <span>{{ $settings->phone }}</span>
