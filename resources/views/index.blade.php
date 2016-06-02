@@ -110,6 +110,4 @@
     @include('partials._recall')
 @endsection
 
-@section('copyright')
-    Сделано <a href="http://jeny-art.ru" target="_blank">web-студия jeny-art.ru</a>
-@endsection
+@section('copyright') Сделано <a href="http://jeny-art.ru" target="_blank">web-студия jeny-art.ru</a> @endsection

@@ -41,3 +41,5 @@
 
     @include('partials._calculation')
 @endsection
+
+@section('copyright') Сделано web-студия jeny-art.ru @endsection

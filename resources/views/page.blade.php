@@ -59,3 +59,5 @@
 @section('header_scripts')
     <script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
 @endsection
+
+@section('copyright') Сделано web-студия jeny-art.ru @endsection
