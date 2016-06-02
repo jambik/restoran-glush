@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Gallery;
+use App\Page;
 
 class GalleriesController extends FrontendController
 {
@@ -14,8 +15,9 @@ class GalleriesController extends FrontendController
     public function index()
     {
         $galleries = Gallery::all();
+        $page = Page::findBySlug('galleries');
 
-        return view('galleries.index', compact('galleries'));
+        return view('galleries.index', compact('galleries', 'page'));
     }
 
     /**

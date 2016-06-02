@@ -115,6 +115,7 @@ Route::group([], function ()
     Route::get('catalog', ['as' => 'catalog', 'uses' => 'CatalogController@index']); // index page
     Route::get('catalog/{category}', ['as' => 'catalog.category', 'uses' => 'CatalogController@category']); // category page
     Route::get('product/{product}', ['as' => 'catalog.product', 'uses' => 'CatalogController@product']); // product page
+    Route::get('product_popup/{product}', ['as' => 'catalog.product_popup', 'uses' => 'CatalogController@productPopup']); // product popup page
 
     ## Profile routes
     Route::group(['middleware' => 'auth'], function ()

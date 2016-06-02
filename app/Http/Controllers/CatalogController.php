@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Page;
 use App\Product;
 
 class CatalogController extends FrontendController
@@ -14,7 +15,9 @@ class CatalogController extends FrontendController
      */
     public function index()
     {
-        return view('catalog.index');
+        $page = Page::findBySlug('catalog');
+
+        return view('catalog.index', compact('page'));
     }
 
     /**
@@ -50,5 +53,18 @@ class CatalogController extends FrontendController
         $sameProducts      = $sameProducts->random($sameProducts->count() < $sameProductsCount ? $sameProducts->count() : $sameProductsCount);
 
         return view('catalog.product', compact('category', 'product', 'sameProducts'));
+    }
+
+    /**
+     * Display product page.
+     *
+     * @param $slug
+     * @return Response
+     */
+    public function productPopup($slug)
+    {
+        $product = Product::findBySlugOrIdOrFail($slug);
+
+        return view('catalog.product_popup', compact('product'));
     }
 }

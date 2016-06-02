@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Page;
 
 class ArticlesController extends FrontendController
 {
@@ -14,8 +15,9 @@ class ArticlesController extends FrontendController
     public function index()
     {
         $articles = Article::all();
+        $page = Page::findBySlug('articles');
 
-        return view('articles.index', compact('articles'));
+        return view('articles.index', compact('articles', 'page'));
     }
 
     /**

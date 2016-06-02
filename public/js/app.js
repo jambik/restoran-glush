@@ -112,6 +112,13 @@ $(document).ready(function() {
         });
     }
 
+    if ($('.ajax-popup').length) {
+        $('.ajax-popup').magnificPopup({
+            type: 'ajax',
+            overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
+        });
+    }
+
 });
 
 function ajaxFormSubmit(e, successFunction)

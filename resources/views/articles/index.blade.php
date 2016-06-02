@@ -2,6 +2,9 @@
 
 @section('title', 'Статьи')
 
+@section('header_attributes') @if (isset($page) && $page->header->count() && $page->header->first()->image) style="background-image: url('/images/original/{{ $page->header->first()->img_url . $page->header->first()->image }}')" @endif @endsection
+@section('slogan') @if (isset($page) && $page->header->count() && $page->header->first()->title) {{ $page->header->first()->title }} @endif @endsection
+
 @section('below-more')
     <ul>
         <li><a href="{{ route('index') }}">Главная</a></li>

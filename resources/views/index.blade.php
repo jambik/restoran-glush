@@ -46,13 +46,13 @@
                 <div class="text-xl text-center">Анонсы ресторанного меню</div>
                 <div class="row">
                     <div class="products-previews">
-                        @foreach ($productsPreview as $product)<a href="{{ route('catalog.category', $product->category->slug) . '#product-' . $product->id }}"><div class="product-preview hvr-sweep-to-bottom" style="background-image: url('/images/anons/{{ $product->img_url . $product->image }}')">
-                                    <div class="product-name">{{ $product->name }}</div>
-                                    <div class="product-details">
-                                        <div class="product-price">цена <strong>{{ $product->price }}</strong> руб.</div>
-                                        <div class="product-more">подробнее о блюде</div>
-                                    </div>
-                                    <div class="product-category"><span>{{ $product->category->name }}</span></div>
+                        @foreach ($productsPreview as $product)<a class="ajax-popup" href="{{ route('catalog.product_popup', $product->slug) }}"><div class="product-preview hvr-sweep-to-bottom" style="background-image: url('/images/anons/{{ $product->img_url . $product->image }}')">
+                            <div class="product-name">{{ $product->name }}</div>
+                            <div class="product-details">
+                                <div class="product-price">цена <strong>{{ $product->price }}</strong> руб.</div>
+                                <div class="product-more">подробнее о блюде</div>
+                            </div>
+                            <div class="product-category"><span>{{ $product->category->name }}</span></div>
                         </div></a>@endforeach
                     </div>
                 </div>
