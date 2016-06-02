@@ -98,7 +98,7 @@
     </section>
 
     <section id="map">
-        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=E4XyfmeSWzf7HFsdCFnBV8bPQ8Tz3_Ml&width=100%&height=720&lang=ru_RU&sourceType=constructor&scroll=true"></script>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=E4XyfmeSWzf7HFsdCFnBV8bPQ8Tz3_Ml&width=100%&height=720&lang=ru_RU&sourceType=constructor&scroll=false"></script>
     </section>
 @endsection
 
