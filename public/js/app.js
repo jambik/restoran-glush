@@ -7,8 +7,10 @@ $(document).ready(function() {
     $(window).bind('scroll', function () {
         if ($(window).scrollTop() > 400) {
             $('nav').addClass('fixed');
+            $('#fixed-padding').show();
         } else {
             $('nav').removeClass('fixed');
+            $('#fixed-padding').hide();
         }
     });
 

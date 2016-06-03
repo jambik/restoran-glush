@@ -31,6 +31,7 @@
 <div class="main-container">
     <header id="header" @yield('header_attributes')>
         <div class="container-fluid">
+            <div id="fixed-padding" style="display: none;"></div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
                     <span class="sr-only">Меню</span>

@@ -70,6 +70,14 @@
         </div>
     </section>
 
+    <section id="recalls-cook">
+        <div class="container-fluid">
+            <div class="cook">
+                <img src="{{ asset('img/cook.png') }}">
+            </div>
+        </div>
+    </section>
+
     <section id="recalls">
         <div class="container">
             <div class="text-xl text-center">Отзывы</div>
